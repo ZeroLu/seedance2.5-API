@@ -4,6 +4,8 @@
 [![GitHub Forks](https://img.shields.io/github/forks/ZeroLu/seedance2.5-API?style=for-the-badge)](https://github.com/ZeroLu/seedance2.5-API/network/members)
 [![MIT License](https://img.shields.io/github/license/ZeroLu/seedance2.5-API?style=for-the-badge)](./LICENSE)
 
+![Seedance 2.5 API Cover](./assets/seedance25-api-cover-16x9-cropped.png)
+
 A practical **Seedance 2.5 API** guide for developers who want global access to **text-to-video**, **image-to-video**, and **real human face workflows** without dealing with region locks or fragmented tooling.
 
 CyberBara provides a production-ready API surface for **Seedance 2.5 API** access, with support for reusable uploads, async task polling, and creator workflows that go beyond a thin prompt wrapper.
