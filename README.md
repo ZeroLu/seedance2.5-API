@@ -86,6 +86,67 @@ x-api-key: <YOUR_API_KEY>
 
 ---
 
+## Python Wrapper
+
+This repository now includes a minimal Python wrapper for the CyberBara **Seedance 2.5 API**.
+
+Install locally:
+
+```bash
+pip install -e .
+```
+
+Basic usage:
+
+```python
+from seedance25_api import Seedance25Client
+
+client = Seedance25Client("YOUR_API_KEY")
+
+created = client.text_to_video(
+    "A cinematic drone shot over a misty mountain village at sunrise.",
+    duration="10",
+    aspect_ratio="16:9",
+)
+
+task = client.wait_for_task(created["task_id"])
+print(task["output"]["videos"])
+```
+
+Image-to-video with uploaded reference:
+
+```python
+from seedance25_api import Seedance25Client
+
+client = Seedance25Client("YOUR_API_KEY")
+upload = client.upload_images(["./reference.png"])
+
+created = client.image_to_video(
+    "The subject turns slowly toward camera, subtle smile, natural skin texture.",
+    image_urls=upload["urls"],
+    duration="10",
+    aspect_ratio="9:16",
+)
+
+task = client.wait_for_task(created["task_id"])
+print(task["output"]["videos"])
+```
+
+Wrapper methods:
+
+- `models()`
+- `quote_video()`
+- `text_to_video()`
+- `image_to_video()`
+- `upload_images()`
+- `upload_videos()`
+- `get_task()`
+- `wait_for_task()`
+
+See runnable examples in [examples/text_to_video.py](./examples/text_to_video.py) and [examples/image_to_video.py](./examples/image_to_video.py).
+
+---
+
 ## API Examples
 
 ### 1. List available video models
@@ -114,7 +175,7 @@ The response returns a reusable uploaded URL for later generation requests.
 ### 3. Create a text-to-video task
 
 ```bash
-curl -X POST 'https://cyberbara.com/api/v1/tasks' \
+curl -X POST 'https://cyberbara.com/api/v1/videos/generations' \
   -H 'Authorization: Bearer <YOUR_API_KEY>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -135,7 +196,7 @@ Use this route when you want pure prompt-driven generation.
 ### 4. Create an image-to-video task
 
 ```bash
-curl -X POST 'https://cyberbara.com/api/v1/tasks' \
+curl -X POST 'https://cyberbara.com/api/v1/videos/generations' \
   -H 'Authorization: Bearer <YOUR_API_KEY>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -170,7 +231,7 @@ Poll until the task reaches a final state, then read the output URL from the res
 ### 6. Quote credits before generation
 
 ```bash
-curl -X POST 'https://cyberbara.com/api/v1/quote' \
+curl -X POST 'https://cyberbara.com/api/v1/credits/quote' \
   -H 'Authorization: Bearer <YOUR_API_KEY>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -192,32 +253,18 @@ Useful when you want budget visibility before launching larger runs.
 ## Python Example
 
 ```python
-import requests
+from seedance25_api import Seedance25Client
 
-API_KEY = "YOUR_API_KEY"
-BASE_URL = "https://cyberbara.com"
+client = Seedance25Client("YOUR_API_KEY")
 
-payload = {
-    "model": "seedance-2.5",
-    "scene": "text-to-video",
-    "prompt": "A high-end perfume commercial, glossy lighting, slow motion liquid splash, premium cinematic style.",
-    "options": {
-        "duration": "10",
-        "aspect_ratio": "16:9"
-    }
-}
-
-resp = requests.post(
-    f"{BASE_URL}/api/v1/tasks",
-    headers={
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json"
-    },
-    json=payload,
-    timeout=60,
+created = client.text_to_video(
+    "A high-end perfume commercial, glossy lighting, slow motion liquid splash, premium cinematic style.",
+    duration="10",
+    aspect_ratio="16:9",
 )
 
-print(resp.json())
+task = client.wait_for_task(created["task_id"])
+print(task["output"]["videos"])
 ```
 
 ---
