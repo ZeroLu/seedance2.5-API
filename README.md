@@ -1,5 +1,7 @@
 # Seedance 2.5 API
 
+[![PyPI version](https://img.shields.io/pypi/v/seedance25-api?style=for-the-badge)](https://pypi.org/project/seedance25-api/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/seedance25-api?style=for-the-badge)](https://pypi.org/project/seedance25-api/)
 [![GitHub Repo stars](https://img.shields.io/github/stars/ZeroLu/seedance2.5-API?style=for-the-badge)](https://github.com/ZeroLu/seedance2.5-API/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/ZeroLu/seedance2.5-API?style=for-the-badge)](https://github.com/ZeroLu/seedance2.5-API/network/members)
 [![MIT License](https://img.shields.io/github/license/ZeroLu/seedance2.5-API?style=for-the-badge)](./LICENSE)
@@ -9,6 +11,12 @@
 A practical **Seedance 2.5 API** guide for developers who want global access to **text-to-video**, **image-to-video**, and **real human face workflows** without dealing with region locks or fragmented tooling.
 
 CyberBara provides a production-ready API surface for **Seedance 2.5 API** access, with support for reusable uploads, async task polling, and creator workflows that go beyond a thin prompt wrapper.
+
+Install from PyPI:
+
+```bash
+pip install seedance25-api
+```
 
 [Quick Start](#quick-start) | [API Examples](#api-examples) | [Real Face Workflows](#real-face-workflows) | [Related Resources](#related-resources)
 
@@ -90,7 +98,13 @@ x-api-key: <YOUR_API_KEY>
 
 This repository now includes a minimal Python wrapper for the CyberBara **Seedance 2.5 API**.
 
-Install locally:
+Install from PyPI:
+
+```bash
+pip install seedance25-api
+```
+
+Or install locally for development:
 
 ```bash
 pip install -e .
