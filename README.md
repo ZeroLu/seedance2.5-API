@@ -6,11 +6,19 @@
 [![GitHub Forks](https://img.shields.io/github/forks/ZeroLu/seedance2.5-API?style=for-the-badge)](https://github.com/ZeroLu/seedance2.5-API/network/members)
 [![MIT License](https://img.shields.io/github/license/ZeroLu/seedance2.5-API?style=for-the-badge)](./LICENSE)
 
+[中文 README](./README.zh-CN.md) | [API Entry](https://cyberbara.com/api) | [Get API Key](https://cyberbara.com/api)
+
 ![Seedance 2.5 API Cover](./assets/seedance25-api-cover-16x9-cropped.png)
 
-A practical **Seedance 2.5 API** guide for developers who want global access to **text-to-video**, **image-to-video**, and **real human face workflows** without dealing with region locks or fragmented tooling.
+Access the **full-access Seedance 2.5 API** through CyberBara.
 
-CyberBara provides a production-ready API surface for **Seedance 2.5 API** access, with support for reusable uploads, async task polling, and creator workflows that go beyond a thin prompt wrapper.
+This is not the same access path most developers see on BytePlus, Volcengine, or the public Dreamina Seedance 2.5 surface. The version exposed here is positioned around a **full-access enterprise tier** that is typically reserved for customers with very large annual spend, and it includes three benefits developers care about most:
+
+- **Unlimited real human face workflows**
+- **More permissive prompt review**
+- **VIP priority queue**
+
+If you need real creator workflows instead of a stripped-down demo path, this repo is built for that.
 
 Install from PyPI:
 
@@ -18,7 +26,7 @@ Install from PyPI:
 pip install seedance25-api
 ```
 
-[Quick Start](#quick-start) | [API Examples](#api-examples) | [Real Face Workflows](#real-face-workflows) | [Related Resources](#related-resources)
+[Quick Start](#quick-start) | [Comparison](#comparison) | [API Examples](#api-examples) | [FAQ](#faq)
 
 ---
 
@@ -35,32 +43,72 @@ If you are searching for:
 
 this repository is for you.
 
-Most Seedance discussions online stop at launch news, screenshots, or waitlists. This repo is focused on what developers actually need:
+Most pages only tell you that Seedance 2.5 exists. They do not explain the access gap between:
 
-- how to access the API
-- how to list models
-- how to upload reference assets
-- how to create video tasks
-- how to poll task status
-- how to run real production workflows
-- how to connect Seedance to a broader prompt and tooling ecosystem
+- public web product access
+- standard cloud API access
+- full-access enterprise access
+
+This repo focuses on the third one.
 
 ---
 
 ## Why Use CyberBara For Seedance 2.5 API
 
-CyberBara is built for real usage, not just demos.
+CyberBara is built for teams that need the **full-access Seedance 2.5 API**, not a limited public wrapper.
 
-### Key advantages
+### What "full-access" means here
 
-- **Global API access**: no need to depend on region-locked consumer apps
-- **One API surface**: uploads, generation, task status, model listing, and credit checks
-- **Production-friendly**: reusable asset URLs and async task polling
-- **Real workflow support**: useful for portrait motion, character-driven content, ads, short drama tests, and creator tooling
-- **Broader ecosystem**: works alongside prompt libraries, how-to guides, and agent skills
+- **Unlimited real human face support** for production portrait and avatar workflows
+- **More permissive moderation** for prompts that often get blocked on stricter public surfaces
+- **VIP priority queue** for faster execution during demand spikes
+- **Unified developer API** for uploads, generation, status polling, model listing, and credit checks
+- **Global access path** without forcing teams into fragmented region-locked flows
 
 API docs: [cyberbara.com/api](https://cyberbara.com/api)  
 Skill page: [cyberbara.co/skill](https://cyberbara.co/skill)
+
+---
+
+## Comparison
+
+The biggest confusion around Seedance 2.5 is that people assume every "Seedance 2.5" entry point is the same. It is not.
+
+| Access path | Typical audience | Real human face policy | Prompt review | Queue priority | Notes |
+| --- | --- | --- | --- | --- | --- |
+| **CyberBara full-access Seedance 2.5 API** | Developers, creators, agencies, growth teams, product teams | **Unlimited real human face workflows** | **More permissive** | **VIP priority queue** | Best fit when you need the full-access enterprise-style capability through an API |
+| BytePlus / Volcengine standard API | General cloud customers | Usually more restricted | Usually stricter | Standard queue | Better for standard cloud procurement, not the full-access path highlighted here |
+| Dreamina public Seedance 2.5 surface | Consumer and creator UI users | Usually the most limited | Public-product moderation | Shared public queue | Good for testing ideas, not for full API workflow control |
+| Direct full-access enterprise deal | Large enterprise buyers | Full-access depending on contract | Full-access depending on contract | Highest priority depending on contract | Commonly associated with very large annual commitments, often at enterprise scale |
+
+### In plain English
+
+If your use case depends on:
+
+- real-person portrait motion
+- fewer prompt-review bottlenecks
+- better queue priority
+- API-first automation
+
+you should not evaluate CyberBara against a consumer UI. You should evaluate it against the **full-access enterprise lane**.
+
+---
+
+## Who It's For
+
+This repo is a strong fit if you are:
+
+- building **real-face video workflows** for ads, UGC, avatar content, or short drama tests
+- running a **creator tool, AI video product, or internal media pipeline**
+- an **agency or growth team** that needs faster turnaround and fewer moderation bottlenecks
+- a **developer team** that wants upload, generation, polling, and asset reuse in one API flow
+- comparing Seedance entry points and specifically trying to avoid the limits of public or standard-access surfaces
+
+This repo is probably not your main need if you only want:
+
+- casual web testing
+- a consumer playground
+- a basic one-off prompt demo without API integration
 
 ---
 
@@ -96,7 +144,7 @@ x-api-key: <YOUR_API_KEY>
 
 ## Python Wrapper
 
-This repository now includes a minimal Python wrapper for the CyberBara **Seedance 2.5 API**.
+This repository includes a minimal Python wrapper for the CyberBara **Seedance 2.5 API**.
 
 Install from PyPI:
 
@@ -264,28 +312,9 @@ Useful when you want budget visibility before launching larger runs.
 
 ---
 
-## Python Example
-
-```python
-from seedance25_api import Seedance25Client
-
-client = Seedance25Client("YOUR_API_KEY")
-
-created = client.text_to_video(
-    "A high-end perfume commercial, glossy lighting, slow motion liquid splash, premium cinematic style.",
-    duration="10",
-    aspect_ratio="16:9",
-)
-
-task = client.wait_for_task(created["task_id"])
-print(task["output"]["videos"])
-```
-
----
-
 ## Real Face Workflows
 
-One of the biggest reasons creators look for a **Seedance 2.5 API** is not generic video generation. It is reference-driven character work.
+One of the main reasons teams look for the **full-access Seedance 2.5 API** is real-person media production.
 
 Common use cases:
 
@@ -296,14 +325,14 @@ Common use cases:
 - short drama character tests
 - image-led commercial videos
 
-Real production work needs more than a prompt box. Teams usually need:
+The important point is not just "supports image-to-video." It is whether your workflow gets blocked when a real face is involved.
 
-- stable reference handling
-- asset upload and reuse
-- cleaner image-to-video pipelines
-- easier handoff between prompt testing and API execution
+CyberBara is positioned for teams that need:
 
-That is why this repo also points to the broader CyberBara Seedance ecosystem below.
+- **unlimited real human face workflows**
+- **fewer moderation bottlenecks**
+- **faster queue access**
+- **API-first automation**
 
 ---
 
@@ -338,17 +367,33 @@ If you want more than just API access, these repositories and pages are part of 
 
 ## FAQ
 
-### Is this the official ByteDance repository?
+### Is this the same as BytePlus, Volcengine, or Dreamina Seedance 2.5?
 
-No. This is an independent developer guide for accessing **Seedance 2.5 API** through CyberBara.
+No. That is the main point of this repository.
 
-### Does this support text-to-video and image-to-video?
+This repo is about accessing a **full-access Seedance 2.5 API lane** through CyberBara, not the standard public path most people see first.
 
-Yes. CyberBara exposes a unified API workflow for both.
+### What makes this "full-access"?
 
-### Is this only for manual testing?
+Three things matter most:
+
+- **Unlimited real human face workflows**
+- **More permissive prompt review**
+- **VIP priority queue**
+
+Those are the differences most teams feel immediately in production.
+
+### Why mention enterprise buyers with very large annual spend?
+
+Because this level of access is commonly associated with enterprise-style procurement, not ordinary self-serve access. For many teams, going through CyberBara is a practical way to reach that capability without needing to negotiate a massive direct annual commitment first.
+
+### Is this useful only for demos or prompt testing?
 
 No. It is designed for real developer usage, including API integration, async polling, asset reuse, and workflow automation.
+
+### Is this the right path if I need real-face creator workflows?
+
+Yes. If real human face support is core to your workflow, this is exactly the point you should evaluate first.
 
 ### Where can I find prompts and workflow inspiration?
 
@@ -361,7 +406,7 @@ Start here:
 
 ## Keywords
 
-Seedance 2.5 API, Seedance 2.5 Python SDK, Seedance 2.5 text to video API, Seedance 2.5 image to video API, Seedance API, CyberBara Seedance API, how to access Seedance 2.5, Seedance 2.5 outside China
+Seedance 2.5 API, full-access Seedance 2.5 API, Seedance 2.5 Python SDK, Seedance 2.5 text to video API, Seedance 2.5 image to video API, Seedance API, CyberBara Seedance API, how to access Seedance 2.5, Seedance 2.5 outside China, unlimited real face Seedance API
 
 ---
 
