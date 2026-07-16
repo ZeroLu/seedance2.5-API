@@ -1,0 +1,39 @@
+{
+  "name": "seedance25-api",
+  "version": "0.1.0",
+  "description": "Node.js wrapper for the CyberBara full-access Seedance 2.5 API",
+  "license": "MIT",
+  "homepage": "https://github.com/ZeroLu/seedance2.5-API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZeroLu/seedance2.5-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZeroLu/seedance2.5-API/issues"
+  },
+  "keywords": [
+    "seedance",
+    "seedance 2.5",
+    "cyberbara",
+    "video generation",
+    "api",
+    "nodejs",
+    "sdk"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check index.js",
+    "pack:dry-run": "npm pack --dry-run"
+  }
+}

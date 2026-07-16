@@ -26,6 +26,12 @@ Install from PyPI:
 pip install seedance25-api
 ```
 
+Install from npm:
+
+```bash
+npm install seedance25-api
+```
+
 [Quick Start](#quick-start) | [Comparison](#comparison) | [API Examples](#api-examples) | [FAQ](#faq)
 
 ---
@@ -206,6 +212,80 @@ Wrapper methods:
 - `wait_for_task()`
 
 See runnable examples in [examples/text_to_video.py](./examples/text_to_video.py) and [examples/image_to_video.py](./examples/image_to_video.py).
+
+---
+
+## Node.js Wrapper
+
+This repository also includes a zero-dependency Node.js wrapper for the CyberBara **Seedance 2.5 API**.
+
+Install from npm:
+
+```bash
+npm install seedance25-api
+```
+
+Basic usage:
+
+```js
+const { Seedance25Client } = require("seedance25-api");
+
+async function main() {
+  const client = new Seedance25Client(process.env.CYBERBARA_API_KEY);
+
+  const created = await client.textToVideo(
+    "A cinematic drone shot over a misty mountain village at sunrise.",
+    {
+      duration: "10",
+      aspectRatio: "16:9"
+    }
+  );
+
+  const task = await client.waitForTask(created.task_id);
+  console.log(task.output?.videos || []);
+}
+
+main().catch(console.error);
+```
+
+Image-to-video with uploaded reference:
+
+```js
+const { Seedance25Client } = require("seedance25-api");
+
+async function main() {
+  const client = new Seedance25Client(process.env.CYBERBARA_API_KEY);
+  const upload = await client.uploadImages(["./reference.png"]);
+
+  const created = await client.imageToVideo(
+    "The subject turns slowly toward camera, subtle smile, natural skin texture.",
+    {
+      imageUrls: upload.urls,
+      duration: "10",
+      aspectRatio: "9:16"
+    }
+  );
+
+  const task = await client.waitForTask(created.task_id);
+  console.log(task.output?.videos || []);
+}
+
+main().catch(console.error);
+```
+
+Wrapper methods:
+
+- `models()`
+- `quoteVideo()`
+- `createVideo()`
+- `textToVideo()`
+- `imageToVideo()`
+- `uploadImages()`
+- `uploadVideos()`
+- `getTask()`
+- `waitForTask()`
+
+See runnable examples in [examples/text_to_video.mjs](./examples/text_to_video.mjs) and [examples/image_to_video.mjs](./examples/image_to_video.mjs).
 
 ---
 

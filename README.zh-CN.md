@@ -20,6 +20,12 @@
 pip install seedance25-api
 ```
 
+或者使用 npm：
+
+```bash
+npm install seedance25-api
+```
+
 [快速开始](#快速开始) | [能力对比](#能力对比) | [API 示例](#api-示例) | [FAQ](#faq)
 
 ---
@@ -192,6 +198,83 @@ print(task["output"]["videos"])
 - `upload_videos()`
 - `get_task()`
 - `wait_for_task()`
+
+---
+
+## Node.js 封装
+
+这个仓库也提供了一个零依赖的 Node.js Wrapper，适合直接接到你的服务端、工作流脚本或内部工具里。
+
+安装：
+
+```bash
+npm install seedance25-api
+```
+
+文生视频示例：
+
+```js
+const { Seedance25Client } = require("seedance25-api");
+
+async function main() {
+  const client = new Seedance25Client(process.env.CYBERBARA_API_KEY);
+
+  const created = await client.textToVideo(
+    "A cinematic drone shot over a misty mountain village at sunrise.",
+    {
+      duration: "10",
+      aspectRatio: "16:9"
+    }
+  );
+
+  const task = await client.waitForTask(created.task_id);
+  console.log(task.output?.videos || []);
+}
+
+main().catch(console.error);
+```
+
+图生视频示例：
+
+```js
+const { Seedance25Client } = require("seedance25-api");
+
+async function main() {
+  const client = new Seedance25Client(process.env.CYBERBARA_API_KEY);
+  const upload = await client.uploadImages(["./reference.png"]);
+
+  const created = await client.imageToVideo(
+    "The subject turns slowly toward camera, subtle smile, natural skin texture.",
+    {
+      imageUrls: upload.urls,
+      duration: "10",
+      aspectRatio: "9:16"
+    }
+  );
+
+  const task = await client.waitForTask(created.task_id);
+  console.log(task.output?.videos || []);
+}
+
+main().catch(console.error);
+```
+
+可用方法：
+
+- `models()`
+- `quoteVideo()`
+- `createVideo()`
+- `textToVideo()`
+- `imageToVideo()`
+- `uploadImages()`
+- `uploadVideos()`
+- `getTask()`
+- `waitForTask()`
+
+示例文件：
+
+- [examples/text_to_video.mjs](./examples/text_to_video.mjs)
+- [examples/image_to_video.mjs](./examples/image_to_video.mjs)
 
 ---
 
