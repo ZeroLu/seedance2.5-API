@@ -1,3 +1,5 @@
+Last updated on 11:33:05 17-07-2026
+
 # Seedance 2.5 API
 
 [![PyPI version](https://img.shields.io/pypi/v/seedance25-api?style=for-the-badge)](https://pypi.org/project/seedance25-api/)
@@ -6,7 +8,7 @@
 [![GitHub Forks](https://img.shields.io/github/forks/ZeroLu/seedance2.5-API?style=for-the-badge)](https://github.com/ZeroLu/seedance2.5-API/network/members)
 [![MIT License](https://img.shields.io/github/license/ZeroLu/seedance2.5-API?style=for-the-badge)](./LICENSE)
 
-[中文 README](./README.zh-CN.md) | [API Entry](https://cyberbara.com/api) | [Get API Key](https://cyberbara.com/api)
+[中文 README](./README.zh-CN.md) | [API Entry](https://cyberbara.com/api) | [Get API Key](https://cyberbara.com/api) | [Awesome Seedance](https://github.com/ZeroLu/awesome-seedance)
 
 ![Seedance 2.5 API Cover](./assets/seedance25-api-cover-16x9-cropped.png)
 

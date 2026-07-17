@@ -1,6 +1,8 @@
+Last updated on 11:33:05 17-07-2026
+
 # Seedance 2.5 API 中文说明
 
-[English README](./README.md) | [API 入口](https://cyberbara.com/api) | [获取 API Key](https://cyberbara.com/api)
+[English README](./README.md) | [API 入口](https://cyberbara.com/api) | [获取 API Key](https://cyberbara.com/api) | [Awesome Seedance](https://github.com/ZeroLu/awesome-seedance)
 
 ![Seedance 2.5 API Cover](./assets/seedance25-api-cover-16x9-cropped.png)
 
